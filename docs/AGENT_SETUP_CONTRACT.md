@@ -70,3 +70,32 @@ Ask only if:
 - the selected profile materially changes project behavior.
 
 Do not ask before safe local regeneration.
+
+
+## In-session capability toggles
+
+If the user asks to enable or disable capabilities while Codex/OMX is already running, do not treat README text as the source of truth. Use AgentDeps state files and report runtime limits.
+
+Standard flow:
+
+```bash
+mad agent status
+mad agent apply --session --enable <module> --disable <module>
+mad doctor --session
+```
+
+Report with this shape:
+
+```text
+Active now: <soft instructions/routing applied>
+Generated for next run: <runtime/profile changes>
+Restart required: <MCP/skill/agent discovery changes>
+Blocked: <credentials or unsupported changes>
+```
+
+Rules:
+
+1. Soft instruction/routing changes may be applied in-session.
+2. MCP server changes require a restart unless Codex/OMX explicitly supports hot reload.
+3. New skills/agents should be treated as next-session capabilities unless already available in the active surface.
+4. Durable project defaults require editing `agentdeps.toml`; temporary session intent should go in `.agentdeps/session.toml`.

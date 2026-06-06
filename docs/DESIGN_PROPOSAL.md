@@ -145,6 +145,15 @@ Rules:
 - modules may declare required environment variable names, not secret values;
 - generated files include a header and should be reproducible.
 
+## 5.5 Two control modes
+
+AgentDeps supports two different surfaces:
+
+1. **Sealed runtime mode**: `mad install` and `mad run` resolve capabilities before Codex/OMX starts. This is deterministic and required for hard capabilities such as MCP server configuration.
+2. **Live advisory toggle mode**: when already inside a running session, the agent may update `.agentdeps/session.toml`, apply soft instruction/routing changes, regenerate future runtime files, and report which changes require restart.
+
+This is specified in [`RUNTIME_TOGGLE_DESIGN.md`](RUNTIME_TOGGLE_DESIGN.md). README alone is not enough because agents need machine-readable current state.
+
 ## 6. CLI design
 
 ### 6.1 Basic commands

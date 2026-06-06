@@ -26,6 +26,16 @@ mad run --profile ios -- codex
 - remote registry support is deferred until the local prototype is proven;
 - `mad doctor` should explain active modules, warnings, and generated paths.
 
+
+## Two control modes
+
+AgentDeps should support both:
+
+1. **Sealed runtime mode**: resolve modules before launch with `mad install` / `mad run`. This is deterministic and required for hard capabilities like MCP configuration.
+2. **Live advisory toggle mode**: while already inside a running Codex/OMX session, an agent can update session intent, enable/disable soft capabilities, regenerate future runtime files, and report what requires restart.
+
+See [`docs/RUNTIME_TOGGLE_DESIGN.md`](docs/RUNTIME_TOGGLE_DESIGN.md).
+
 ## Current status
 
 Design/prototype stage. The next milestone is a minimal local CLI that can initialize a manifest, generate profile-specific runtimes, run doctor checks, and launch a command with the generated runtime.
@@ -34,6 +44,7 @@ Design/prototype stage. The next milestone is a minimal local CLI that can initi
 
 - [`docs/DESIGN_PROPOSAL.md`](docs/DESIGN_PROPOSAL.md)
 - [`docs/AGENT_SETUP_CONTRACT.md`](docs/AGENT_SETUP_CONTRACT.md)
+- [`docs/RUNTIME_TOGGLE_DESIGN.md`](docs/RUNTIME_TOGGLE_DESIGN.md)
 - [`docs/SELF_CRITIQUE.md`](docs/SELF_CRITIQUE.md)
 - [`docs/NEXT_IMPLEMENTATION_PLAN.md`](docs/NEXT_IMPLEMENTATION_PLAN.md)
 - [`docs/OSS_RELEASE_STRATEGY.md`](docs/OSS_RELEASE_STRATEGY.md)

@@ -64,3 +64,10 @@ lockfile = ".agentdeps/agentdeps.lock.toml"
 auto_run_module_scripts = false
 fail_on_name_conflict = true
 require_lockfile_for_run = true
+
+[session]
+# Session toggles are advisory overlays for already-running Codex/OMX sessions.
+# Durable project defaults should still live in [profiles.*].
+allow_session_toggles = true
+session_state = ".agentdeps/session.toml"
+restart_required_for = ["mcp", "new-skills", "new-agents"]
