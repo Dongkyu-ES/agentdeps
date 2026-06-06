@@ -1,0 +1,66 @@
+# Example AgentDeps manifest.
+# Copy to ./agentdeps.toml in a project and adjust profiles/modules.
+
+[project]
+name = "example-ios-app"
+default_profile = "light"
+
+[profiles.light]
+description = "Minimal repo-aware Codex environment."
+modules = ["core", "repo-basic"]
+
+[profiles.ios]
+description = "iOS modular architecture environment inspired by Tuist."
+extends = "light"
+modules = ["ios-swift", "tuist", "xcode-debugging"]
+
+[profiles.release]
+description = "iOS release and App Store operations."
+extends = "ios"
+modules = ["app-release", "localization"]
+
+[registry]
+# Local registry first for private company/team modules.
+local = "./.agentdeps/modules"
+# Remote registry support is planned, but MVP should prefer local/file sources.
+# remote = "https://github.com/example/agentdeps-registry"
+
+[modules.core]
+source = "builtin:core"
+version = "0.1.0"
+
+[modules.repo-basic]
+source = "builtin:repo-basic"
+version = "0.1.0"
+
+[modules.ios-swift]
+source = "builtin:ios-swift"
+version = "0.1.0"
+
+[modules.tuist]
+source = "builtin:tuist"
+version = "0.1.0"
+
+[modules.xcode-debugging]
+source = "builtin:xcode-debugging"
+version = "0.1.0"
+
+[modules.app-release]
+source = "builtin:app-release"
+version = "0.1.0"
+
+[modules.localization]
+source = "builtin:localization"
+version = "0.1.0"
+
+[runtime]
+# copy = reproducible and safe for CI/archive; symlink = faster for local module development.
+materialization = "copy"
+output_dir = ".agentdeps/runtime"
+lockfile = ".agentdeps/agentdeps.lock.toml"
+
+[policy]
+# Remote modules may declare setup scripts, but MVP should not auto-run them.
+auto_run_module_scripts = false
+fail_on_name_conflict = true
+require_lockfile_for_run = true

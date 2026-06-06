@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# AgentDeps generated runtime
+.agentdeps/runtime/
+.agentdeps/tmp/
+
+# OMX/session-local state
+.omx/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
