@@ -55,7 +55,7 @@ Mitigation:
 
 - start with 5-7 high-value modules;
 - support profiles as UX layer;
-- provide `mad explain` so users know why a capability exists.
+- provide `mad agent explain` so users know why a capability exists.
 
 ### Risk 5: Conflict resolution complexity
 
@@ -140,7 +140,7 @@ Open-source users will distrust a tool that touches agent config and MCP. The RE
 - generated output is inspectable;
 - no global mutation by default;
 - scripts disabled by default;
-- `mad diff` before applying any global change.
+- a future preview/diff command before applying any global change.
 
 ## Better first demo
 
@@ -154,13 +154,15 @@ mad run --profile ios
 # adds iOS/Tuist/release capabilities
 ```
 
-Then show:
+Then show the implemented v0 explanation commands:
 
 ```bash
-mad explain --profile ios
+mad agent capabilities --profile ios
+mad agent explain tuist
 ```
 
-and prove exactly why each capability exists.
+and prove exactly why each capability exists. A richer `mad agent capabilities --profile ios
+mad agent explain tuist` can remain a future command.
 
 ## Final recommendation
 

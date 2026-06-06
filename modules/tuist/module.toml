@@ -1,0 +1,8 @@
+[module]
+name = "tuist"
+version = "0.1.0"
+description = "Tuist-inspired project graph and generated workspace guidance."
+capability_classes = ["soft-instruction", "new-skills"]
+skills = ["tuist-workflow"]
+agents = []
+mcp = []

@@ -1,0 +1,8 @@
+[module]
+name = "app-release"
+version = "0.1.0"
+description = "Fastlane, TestFlight, and App Store release workflow guidance."
+capability_classes = ["soft-instruction", "new-skills"]
+skills = ["app-release"]
+agents = []
+mcp = []

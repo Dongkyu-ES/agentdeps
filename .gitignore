@@ -8,9 +8,10 @@ build/
 coverage/
 *.tsbuildinfo
 
-# AgentDeps generated runtime
+# AgentDeps generated/local runtime
 .agentdeps/runtime/
 .agentdeps/tmp/
+.agentdeps/session.toml
 
 # OMX/session-local state
 .omx/

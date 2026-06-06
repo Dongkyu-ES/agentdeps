@@ -23,10 +23,12 @@ mad agent bootstrap
 mad doctor
 ```
 
-If `mad` is not installed yet in the repository, use the repo-local fallback once implemented:
+The v0 bootstrap command is implemented as install plus doctor for the selected profile.
+
+If the global `mad` binary is not installed yet, use the repo-local CLI entrypoint:
 
 ```bash
-node ./packages/cli/dist/index.js agent bootstrap
+node ./bin/mad.js agent bootstrap
 ```
 
 ## Expected project files
@@ -87,7 +89,7 @@ mad doctor --session
 Report with this shape:
 
 ```text
-Active now: <soft instructions/routing applied>
+Session intent recorded: <soft instructions/routing intent>
 Generated for next run: <runtime/profile changes>
 Restart required: <MCP/skill/agent discovery changes>
 Blocked: <credentials or unsupported changes>

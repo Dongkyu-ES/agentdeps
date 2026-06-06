@@ -49,7 +49,7 @@ Features:
 - `light` and `ios` demo profiles;
 - lockfile;
 - conflict detection;
-- `mad explain`.
+- `mad agent explain`.
 
 ### v0.2.0 — Module authoring
 
@@ -111,7 +111,8 @@ mad init
 mad install --profile light
 mad doctor --profile light
 mad install --profile ios
-mad explain --profile ios
+mad agent capabilities --profile ios
+mad agent explain tuist
 mad run --profile ios -- env | grep CODEX
 ```
 

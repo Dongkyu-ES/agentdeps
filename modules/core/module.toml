@@ -1,0 +1,8 @@
+[module]
+name = "core"
+version = "0.1.0"
+description = "Baseline AgentDeps safety and project-local runtime instructions."
+capability_classes = ["soft-instruction"]
+skills = []
+agents = []
+mcp = []

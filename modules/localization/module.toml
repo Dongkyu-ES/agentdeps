@@ -1,0 +1,8 @@
+[module]
+name = "localization"
+version = "0.1.0"
+description = "String catalog and localization workflow guidance."
+capability_classes = ["soft-instruction"]
+skills = []
+agents = []
+mcp = []

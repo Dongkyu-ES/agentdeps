@@ -165,9 +165,13 @@ mad remove tuist                 # remove module from profile
 mad install                      # resolve modules and write lock/runtime
 mad doctor                       # validate runtime, tools, env vars, conflicts
 mad run --profile ios            # launch Codex/OMX with generated runtime
-mad explain --profile ios        # show why each capability is present
-mad graph                        # print module dependency graph
-mad clean                        # remove generated runtime only
+mad agent capabilities --profile ios  # show active profile capability classes
+mad agent explain tuist              # explain one module
+mad clean                            # remove generated runtime only
+
+# Future/non-v0 candidates:
+# future richer profile explanation command
+# future module graph command
 ```
 
 ### 6.2 Agent-friendly commands
@@ -177,8 +181,11 @@ Agents need commands that are safe, obvious, and non-destructive.
 ```bash
 mad agent status                 # concise current profile/runtime state
 mad agent bootstrap              # install if missing, then doctor
-mad agent handoff                # emit a compact summary for AGENTS.md or chat
-mad agent repair --safe          # regenerate runtime without touching global config
+mad agent restart-command        # print a restart command for the selected profile
+
+# Future/non-v0 candidates:
+# future compact handoff summary command
+# future safe repair command
 ```
 
 These commands should avoid changing `~/.codex` unless explicitly requested.

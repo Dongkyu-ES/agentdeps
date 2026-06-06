@@ -59,8 +59,7 @@ Agent behavior:
 
 ```bash
 mad agent status
-mad agent suggest --enable tuist --disable app-release
-mad agent apply --session
+mad agent apply --session --enable tuist --disable app-release
 mad doctor --session
 ```
 
@@ -122,11 +121,11 @@ When a user asks to turn capabilities on/off during an active session, the agent
 
 1. inspect `agentdeps.toml`, lockfile, and current session state;
 2. classify requested changes as soft or hard;
-3. apply soft changes to `.agentdeps/session.toml`;
+3. record soft-routing intent in `.agentdeps/session.toml`;
 4. update `agentdeps.toml` only if the user wants durable project defaults;
 5. run `mad doctor --session`;
 6. clearly report:
-   - active now;
+   - session intent recorded;
    - generated for next run;
    - restart required;
    - blocked by credentials or missing tools.
@@ -143,10 +142,7 @@ mad agent explain tuist
 
 ### Consultation/planning
 
-```bash
-mad agent suggest --goal "Tuist modularization only, no release ops"
-mad agent diff --enable tuist --disable app-release
-```
+For v0, consultation happens in the agent conversation and is recorded with `mad agent apply --session`. Future commands may add explicit `suggest` or `diff` subcommands after the state model stabilizes.
 
 ### Apply session-only changes
 
@@ -174,7 +170,7 @@ mad agent restart-command
 Every toggle response should separate four states:
 
 ```text
-Active now: soft instructions/routing applied in this conversation
+Session intent recorded: soft instructions/routing intent for this repository
 Generated: runtime files updated for next launch
 Restart required: MCP/skill/agent discovery changes
 Blocked: credentials or unsupported live reload

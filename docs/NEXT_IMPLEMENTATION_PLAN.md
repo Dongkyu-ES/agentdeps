@@ -93,4 +93,13 @@ Prototype is done when:
 - `mad install --profile ios` succeeds;
 - `mad doctor --profile ios` returns pass/warnings;
 - generated runtime files exist and differ by profile;
+- `mad run` refuses missing or mismatched lockfiles;
+- unsafe profile/path deletion is blocked;
+- duplicate capability names fail when `fail_on_name_conflict = true`;
+- session state uses `[session.toggles]` and `[session.restart_required]`;
 - no global `~/.codex` files are changed.
+
+
+## Implementation adjustment
+
+The first MVP implementation uses a dependency-free Node.js ESM CLI instead of TypeScript. This keeps the public prototype easy to run and avoids dependency setup while the schema and runtime behavior are still stabilizing. A TypeScript migration remains possible after the command/API surface proves useful.

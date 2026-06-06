@@ -1,0 +1,8 @@
+[module]
+name = "repo-basic"
+version = "0.1.0"
+description = "Basic repository inspection, git hygiene, and validation guidance."
+capability_classes = ["soft-instruction"]
+skills = []
+agents = []
+mcp = []

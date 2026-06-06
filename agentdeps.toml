@@ -1,0 +1,67 @@
+[project]
+name = "agentdeps"
+default_profile = "light"
+
+[profiles]
+
+[profiles.light]
+description = "Minimal repo-aware Codex environment."
+modules = ["core", "repo-basic"]
+
+[profiles.ios]
+description = "iOS modular architecture environment inspired by Tuist."
+extends = "light"
+modules = ["ios-swift", "tuist", "xcode-debugging"]
+
+[profiles.release]
+description = "iOS release and App Store operations."
+extends = "ios"
+modules = ["app-release", "localization"]
+
+[registry]
+local = "./.agentdeps/modules"
+
+[modules]
+
+[modules.core]
+source = "builtin:core"
+version = "0.1.0"
+
+[modules.repo-basic]
+source = "builtin:repo-basic"
+version = "0.1.0"
+
+[modules.ios-swift]
+source = "builtin:ios-swift"
+version = "0.1.0"
+
+[modules.tuist]
+source = "builtin:tuist"
+version = "0.1.0"
+
+[modules.xcode-debugging]
+source = "builtin:xcode-debugging"
+version = "0.1.0"
+
+[modules.app-release]
+source = "builtin:app-release"
+version = "0.1.0"
+
+[modules.localization]
+source = "builtin:localization"
+version = "0.1.0"
+
+[runtime]
+materialization = "copy"
+output_dir = ".agentdeps/runtime"
+lockfile = ".agentdeps/agentdeps.lock.toml"
+
+[policy]
+auto_run_module_scripts = false
+fail_on_name_conflict = true
+require_lockfile_for_run = true
+
+[session]
+allow_session_toggles = true
+session_state = ".agentdeps/session.toml"
+restart_required_for = ["mcp", "new-skills", "new-agents"]

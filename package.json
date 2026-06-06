@@ -1,0 +1,29 @@
+{
+  "name": "agentdeps",
+  "version": "0.0.1",
+  "description": "Project-scoped modular dependency management for Codex/OMX agent environments.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "agentdeps": "./bin/mad.js",
+    "mad": "./bin/mad.js"
+  },
+  "scripts": {
+    "check": "node --check bin/mad.js && find packages/cli/src packages/cli/test -name '*.js' -print0 | xargs -0 -n1 node --check",
+    "test": "node packages/cli/test/smoke.js",
+    "validate:docs": "python3 scripts/validate_docs.py",
+    "validate": "npm run check && npm test && npm run validate:docs"
+  },
+  "files": [
+    "bin/",
+    "packages/cli/src/",
+    "modules/",
+    "docs/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

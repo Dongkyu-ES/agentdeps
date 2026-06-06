@@ -15,6 +15,7 @@ mad init
 mad add ios-swift tuist
 mad install --profile ios
 mad doctor --profile ios
+mad agent apply --session --profile ios --enable tuist --disable app-release
 mad run --profile ios -- codex
 ```
 
@@ -32,13 +33,13 @@ mad run --profile ios -- codex
 AgentDeps should support both:
 
 1. **Sealed runtime mode**: resolve modules before launch with `mad install` / `mad run`. This is deterministic and required for hard capabilities like MCP configuration.
-2. **Live advisory toggle mode**: while already inside a running Codex/OMX session, an agent can update session intent, enable/disable soft capabilities, regenerate future runtime files, and report what requires restart.
+2. **Live advisory toggle mode**: while already inside a running Codex/OMX session, an agent can record session intent, enable/disable soft capability routing as advisory state, regenerate future runtime files, and report what requires restart.
 
 See [`docs/RUNTIME_TOGGLE_DESIGN.md`](docs/RUNTIME_TOGGLE_DESIGN.md).
 
 ## Current status
 
-Design/prototype stage. The next milestone is a minimal local CLI that can initialize a manifest, generate profile-specific runtimes, run doctor checks, and launch a command with the generated runtime.
+Prototype stage. The repository now includes a dependency-free Node.js MVP CLI that can initialize a manifest, generate profile-specific runtimes, run doctor checks, write live advisory session toggles, and launch a command with the generated runtime.
 
 ## Design docs
 

@@ -1,0 +1,8 @@
+[module]
+name = "xcode-debugging"
+version = "0.1.0"
+description = "Xcode build, simulator, and log triage guidance."
+capability_classes = ["soft-instruction"]
+skills = []
+agents = []
+mcp = []

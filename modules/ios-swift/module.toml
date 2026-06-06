@@ -1,0 +1,8 @@
+[module]
+name = "ios-swift"
+version = "0.1.0"
+description = "Swift/iOS modular architecture guidance."
+capability_classes = ["soft-instruction", "new-skills", "new-agents"]
+skills = ["ios-development"]
+agents = ["ios-agent"]
+mcp = []
